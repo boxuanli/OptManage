@@ -217,8 +217,8 @@ var hzy = {
             }
 
             if (flag == 0) {
-                //加入标签 
-                flag = '<li class="hzy-navTab-li active" title="' + obj.text + '">\
+                //加入标签   <a href="javascript:void(0)" hzy-router-href="'+ obj.href + '" hzy-router-text="' + obj.text + '">\
+                flag = '<li class="hzy-navTab-li active" title="' + obj.text + '"> \
                                 <a href="javascript:void(0)" hzy-router-href="'+ obj.href + '" hzy-router-text="' + obj.text + '">\
                                     <span>' + obj.text + '</span>\
                                 </a>\
