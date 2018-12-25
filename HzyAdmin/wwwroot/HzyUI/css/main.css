@@ -259,11 +259,11 @@ a {
 }
 
 .hzy-left220 {
-    margin-left: 220px;
+    margin-left: 195px;
 }
 
 .hzy-left80 {
-    margin-left: 80px;
+    margin-left: 60px;
 }
 
 .hzy-left0 {
@@ -343,8 +343,8 @@ header a {
     color: #fff;
     text-decoration: none;
     display: block;
-    padding-left: 32px;
-    padding-right: 32px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .hzy-logo {
@@ -395,7 +395,7 @@ header a {
 }
 
 .hzy-navMenu-width220 {
-    width: 240px;
+    width: 200px;
     overflow: hidden;
     overflow-y: scroll;
 }
@@ -405,7 +405,7 @@ header a {
 }
 
 .hzy-navMenu-width80 {
-    width: 80px;
+    width: 60px;
 }
 
 .hzy-navMenu-sidebar {
@@ -513,6 +513,7 @@ fieldset[disabled] .form-control {
         }
 
         .sidebar-nav .metismenu a {
+            font-size: 12px;
             position: relative;
             display: block;
             padding: 13px 15px;
@@ -729,10 +730,10 @@ fieldset[disabled] .form-control {
 }
 
 .sidebar-nav2 .metismenu li a.has-first-menu {
-    height: 60px;
+    height: 50px;
     padding: 0;
     text-align: center;
-    line-height: 60px;
+    line-height: 50px;
 }
 
 /*******************皮肤框***********************/
@@ -1101,6 +1102,3 @@ table.dataTable {
     .hzy-upfile-item img {
         padding-top: 3px;
     }
-
-
-    

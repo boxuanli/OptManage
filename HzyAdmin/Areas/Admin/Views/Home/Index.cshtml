@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "HzyAdmin后台管理系统 .Net Core 2.1";
+    ViewData["Title"] = "Operational 管理系统";
     var MainPage = "/Admin/Home/Main";
 }
 @model Sys_AccountM
@@ -8,8 +8,9 @@
         <div class="hzy-header-pc hidden-xs">
             <div class="hzy-header-left hzy-left">
                 <ul>
-                    <li class="hzy-header-btn hzy-headerhover" onclick="hzy.menu.toggle(this);" title="左侧菜单/收缩" data-toggle="tooltip" data-placement="bottom"><a href="javascript:void(0)"><i class="fa fa-bars"></i></a></li>
+
                     <li class="hzy-header-btn hzy-headerhover hzy-logo" title="Logo" data-toggle="tooltip" data-placement="bottom"><a href="javascript:void(0)">@ViewData["Title"]</a></li>
+                    <li class="hzy-header-btn hzy-headerhover" onclick="hzy.menu.toggle(this);" title="左侧菜单/收缩" data-toggle="tooltip" data-placement="bottom"><a href="javascript:void(0)"><i class="fa fa-bars"></i></a></li>
                 </ul>
             </div>
             <div class="hzy-header-right hzy-right">
@@ -48,7 +49,7 @@
                 <div class="hzy-navTab-center">
                     <ul class="list-unstyled list-inline">
                         <li class="hzy-navTab-li active" title="首页"><a href="javascript:void(0)" hzy-router-href="@(MainPage)" hzy-router-text="首页"><span>首页</span></a></li>
-                        <!--<li class="hzy-navTab-li"><a><span>会员列表</span></a><i class="fa fa-close" onclick="hzy.tabs.close(event,$(this).parent().parent())"></i></li>-->
+                        <li class="hzy-navTab-li"><a><span>会员列表</span></a><i class="fa fa-close" onclick="hzy.tabs.close(event,$(this).parent().parent())"></i></li>
                     </ul>
                 </div>
                 <div class="hzy-navTab-right" onclick="hzy.tabs.rightMove()"><i class="fa fa-chevron-right"></i></div>
