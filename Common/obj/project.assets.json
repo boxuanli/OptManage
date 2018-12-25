@@ -6311,11 +6311,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\李伯轩4\\HzyAdmin\\Common\\Common.csproj",
+      "projectUniqueName": "C:\\Users\\ADMIN\\Source\\Repos\\OptManage\\Common\\Common.csproj",
       "projectName": "Common",
-      "projectPath": "E:\\李伯轩4\\HzyAdmin\\Common\\Common.csproj",
+      "projectPath": "C:\\Users\\ADMIN\\Source\\Repos\\OptManage\\Common\\Common.csproj",
       "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "E:\\李伯轩4\\HzyAdmin\\Common\\obj\\",
+      "outputPath": "C:\\Users\\ADMIN\\Source\\Repos\\OptManage\\Common\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

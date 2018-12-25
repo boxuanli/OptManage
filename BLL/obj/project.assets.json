@@ -6937,11 +6937,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\李伯轩4\\HzyAdmin\\BLL\\BLL.csproj",
+      "projectUniqueName": "C:\\Users\\ADMIN\\Source\\Repos\\OptManage\\BLL\\BLL.csproj",
       "projectName": "BLL",
-      "projectPath": "E:\\李伯轩4\\HzyAdmin\\BLL\\BLL.csproj",
+      "projectPath": "C:\\Users\\ADMIN\\Source\\Repos\\OptManage\\BLL\\BLL.csproj",
       "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "E:\\李伯轩4\\HzyAdmin\\BLL\\obj\\",
+      "outputPath": "C:\\Users\\ADMIN\\Source\\Repos\\OptManage\\BLL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -6961,17 +6961,17 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "E:\\李伯轩4\\HzyAdmin\\Common\\Common.csproj": {
-              "projectPath": "E:\\李伯轩4\\HzyAdmin\\Common\\Common.csproj"
+            "C:\\Users\\ADMIN\\Source\\Repos\\OptManage\\Common\\Common.csproj": {
+              "projectPath": "C:\\Users\\ADMIN\\Source\\Repos\\OptManage\\Common\\Common.csproj"
             },
-            "E:\\李伯轩4\\HzyAdmin\\DAL\\DAL.csproj": {
-              "projectPath": "E:\\李伯轩4\\HzyAdmin\\DAL\\DAL.csproj"
+            "C:\\Users\\ADMIN\\Source\\Repos\\OptManage\\DAL\\DAL.csproj": {
+              "projectPath": "C:\\Users\\ADMIN\\Source\\Repos\\OptManage\\DAL\\DAL.csproj"
             },
-            "E:\\李伯轩4\\HzyAdmin\\DbFrame\\DbFrame.csproj": {
-              "projectPath": "E:\\李伯轩4\\HzyAdmin\\DbFrame\\DbFrame.csproj"
+            "C:\\Users\\ADMIN\\Source\\Repos\\OptManage\\DbFrame\\DbFrame.csproj": {
+              "projectPath": "C:\\Users\\ADMIN\\Source\\Repos\\OptManage\\DbFrame\\DbFrame.csproj"
             },
-            "E:\\李伯轩4\\HzyAdmin\\Models\\Models.csproj": {
-              "projectPath": "E:\\李伯轩4\\HzyAdmin\\Models\\Models.csproj"
+            "C:\\Users\\ADMIN\\Source\\Repos\\OptManage\\Models\\Models.csproj": {
+              "projectPath": "C:\\Users\\ADMIN\\Source\\Repos\\OptManage\\Models\\Models.csproj"
             }
           }
         }

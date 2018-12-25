@@ -2066,11 +2066,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\李伯轩4\\HzyAdmin\\DbFrame\\DbFrame.csproj",
+      "projectUniqueName": "C:\\Users\\ADMIN\\Source\\Repos\\OptManage\\DbFrame\\DbFrame.csproj",
       "projectName": "DbFrame",
-      "projectPath": "E:\\李伯轩4\\HzyAdmin\\DbFrame\\DbFrame.csproj",
+      "projectPath": "C:\\Users\\ADMIN\\Source\\Repos\\OptManage\\DbFrame\\DbFrame.csproj",
       "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "E:\\李伯轩4\\HzyAdmin\\DbFrame\\obj\\",
+      "outputPath": "C:\\Users\\ADMIN\\Source\\Repos\\OptManage\\DbFrame\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
