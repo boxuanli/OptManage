@@ -1,0 +1,134 @@
+﻿<div id="hzy-container">
+
+    <div class="page-content">
+
+        <!--高级检索部分-->
+        <div class="panel" id="panelSearch">
+            <div class="panel-heading">
+                <h3 class="panel-title">高级检索</h3>
+            </div>
+            <div class="panel-body">
+
+                <form action="javascript:void(0)">
+                    <div class="col-sm-3">
+                        <h4 class="example-title">用户名</h4>
+                        <input type="text" class="form-control" name="User_Name" placeholder="请输入用户名">
+                    </div>
+                    <div class="col-sm-3">
+                        <h4 class="example-title">登录名</h4>
+                        <input type="text" class="form-control" name="User_LoginName" placeholder="请输入登录名">
+                    </div>
+                </form>
+
+            </div>
+            <div class="panel-footer text-right">
+                <button class="btn btn-primary btn-outline" onclick="adminList.search()">检索</button>&nbsp;&nbsp;
+                <button class="btn btn-success btn-outline" onclick="adminList.resetSearch()">重置</button>&nbsp;&nbsp;
+                <button class="btn btn-danger btn-outline" onclick="adminList.panelSearch()">关闭</button>
+            </div>
+        </div>
+        <!--列表部分-->
+        <div class="panel">
+            <div class="panel-body" style="padding: 10px;padding-bottom:0;">
+
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default btn-outline" onclick="window.location=window.location">
+                                <i class="fa fa-rotate-right"></i>&nbsp;刷新
+                            </button>
+                            <button type="button" class="btn btn-default btn-outline" data-power="Search" name="search" onclick="adminList.panelSearch()">
+                                <i class="fa fa-search"></i>&nbsp;检索
+                            </button>
+                            <button type="button" class="btn btn-default btn-outline" data-power="Add" name="add" onclick="App.Form('add')">
+                                <i class="fa fa-plus"></i>&nbsp;添加
+                            </button>
+                            <button type="button" class="btn btn-default btn-outline" data-power="Edit" name="edit" onclick="App.Form('edit')" disabled="disabled">
+                                <i class="fa fa-pencil"></i>&nbsp;修改
+                            </button>
+                            <button type="button" class="btn btn-default btn-outline" data-power="Delete" name="delete" onclick="App.Delete()" disabled="disabled">
+                                <i class="fa fa-trash"></i>&nbsp;删除
+                            </button>
+
+                            <a class="btn btn-default btn-outline" target="_blank" href="" data-power="GetExcel" name="getExcel" onclick="App.ExportExcel()">
+                                <i class="fa fa-file-excel-o"></i>&nbsp;导出 Excel
+                            </a>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-12 margin-top-5">
+                        <!--表格-->
+                        <table class="table table-bordered table-hover" id="bootStrapTable"></table>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+@section css{
+    <link href="~/Admin/lib/bootstrap-table-develop/src/bootstrap-table.css" rel="stylesheet" />
+    <style type="text/css">
+    </style>
+}
+@section js{
+    <script src="~/Admin/lib/bootstrap-table-develop/src/bootstrap-table.js"></script>
+    <script src="~/Admin/lib/bootstrap-table-develop/src/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="~/Admin/js/admin-list.js"></script>
+    <script type="text/javascript">
+        var FormID = "@ViewData["formWindowName"]";
+        var thisWindowName = "@ViewData["thisWindowName"]";
+
+        $(function () {
+
+            App.Init();
+
+        });
+
+
+        var App = {
+            Init: function () {
+                admin.ajax({
+                    url: "@Url.Action("GetDataSource")",
+                    data: { rows: 1 },
+                    success: function (r) {
+                        var adminBootStrapTable = adminList.bootStrapTable({
+                            url: "@Url.Action("GetDataSource")",
+                            columns: r.column
+                        });
+                    }
+                });
+            },
+            Form: function (tag) {
+                var rows = adminList.selectRows();
+                adminList.form({
+                    id: FormID,
+                    parentIframeName: thisWindowName,
+                    url: "@Url.Action("Info")" + (tag == "add" ? "" : "/?ID=" + rows[0]._ukid),
+                    width: "500px",
+                    height: "600px",
+                    btn: false,
+                });
+            },
+            Delete: function () {
+                adminList.delete('@Url.Action("Delete")', function () {
+                    App.Refresh();
+                    console.log("删除完成!");
+                });
+            },
+            ExportExcel: function () {
+                adminList.exportExcel('@Url.Action("ExportExcel")');
+            },
+            Refresh: function (data) {
+                adminList.refresh(data);
+            }
+
+        };
+
+    </script>
+}

@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DAL
+{
+	//
+	using Common;
+	using DbFrame;
+	using DbFrame.Class;
+	using Models;
+	using DAL.Class;
+	using System.Collections;
+
+    public class <#ClassName#> : BaseDAL
+    {
+        /// <summary>
+        /// 查询
+        /// </summary>
+        /// <param name="query"></param>
+        /// <param name="page"></param>
+        /// <param name="rows"></param>
+        /// <returns></returns>
+        public Sys_PagingEntity GetDataSource(Hashtable query, int page, int rows)
+        {
+			var IQuery = db
+                .Query<<#TableName#>M>((a) => new { });
+
+            return this.FindPaging(IQuery, page, rows,new <#TableName#>M());
+
+        }
+
+
+    }
+}

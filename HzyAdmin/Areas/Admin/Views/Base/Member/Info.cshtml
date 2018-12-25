@@ -1,0 +1,142 @@
+﻿@{
+    var KeyId = Tools.HttpHelper.Request.Query["ID"];
+
+    //这里 只是  一个 示例  这里 可以从 数据库中 读取 数据 然后 加载到页面中
+    var sexList = new List<string>();
+
+    sexList.Add("男");
+    sexList.Add("女");
+
+}
+<div class="page-content animated fadeInDown">
+    <div class="container-fluid" style="padding-bottom:100px;">
+        <div class="row" id="form">
+            <!--检索面板-->
+            @(UI.Input<MemberM>(item => item.Member_Num, 6, null, new { @readonly = "readonly", type = "number" }))
+
+            @(UI.Input<MemberM>(item => item.Member_Name))
+
+            @(UI.Input<MemberM>(item => item.Member_Phone, 6, null, new { type = "nuber" }))
+
+            @(UI.Select<MemberM>(item => item.Member_Sex, () =>
+                    {
+                        var Html = "";
+
+                        foreach (var item in sexList)
+                        {
+                            Html += "<option value=\"" + item + "\">" + item + "</option>";
+                        }
+
+                        return Html;
+                    }))
+
+            @(UI.Input<MemberM>(item => item.Member_Birthday))
+
+            @(UI.FindBack<Sys_UserM, MemberM>(
+                        w => w.User_Name,
+                        w => w.Member_UserID,
+                        Url.Action("Index", "User", new { findback = "Multiple" }),
+                        "App.FindBack.CallBack(row,'User')",
+                        "App.FindBack.CallBack(null,'User');"
+                    ))
+
+            @(UI.UploadImage<MemberM>(item => item.Member_Photo))
+
+            @(UI.UploadFile<MemberM>(item => item.Member_FilePath))
+
+            @(UI.UEditor<MemberM>(item => item.Member_Introduce, 12))
+
+        </div>
+
+    </div>
+</div>
+<!--按钮-->
+<div class="my-ButtonBar text-right">
+    <div class="btn-group">
+        <button type="button" class="btn btn-success btn-outline" data-bind="visible: !App.IsAdd()" onclick="adminForm.resetUrl(null)">新增</button>
+        <button class="btn btn-primary btn-outline" onclick="App.Save()">提交</button>
+        <button class="btn btn-danger btn-outline" onclick="admin.layer.close(admin.getLayerIframeIndex());">关闭</button>
+    </div>
+</div>
+@section css{
+}
+@section js{
+    <script src="~/Admin/lib/Ko/Knockout-3.4.2.debug.js"></script>
+    <script src="~/Admin/js/admin-form.js"></script>
+    <!--js 插件-->
+    <script src="~/Admin/lib/layDate-v5.0.7/laydate/laydate.js"></script>
+    <!-- 配置文件 -->
+    <script src="~/Admin/lib/nUeditor/neditor.config.js"></script>
+    <!-- 编辑器源码文件 -->
+    <script src="~/Admin/lib/nUeditor/neditor.all.min.js"></script>
+    <script src="~/Admin/lib/nUeditor/i18n/zh-cn/zh-cn.js"></script>
+    <!--业务代码-->
+    <script type="text/javascript">
+        var KeyId = '@KeyId';
+        model = new vModel();
+        $(function () {
+            ko.applyBindings(model);//注册vModel
+
+            App.Load();
+        });
+
+        var App = {
+            IsAdd: function () {
+                return !KeyId;
+            },
+            Load: function () {
+                //时间 配置 代码
+                laydate.render({
+                    elem: "input[name=Member_Birthday]",
+                    type: 'date',
+                    done: function (value, date, endDate) {
+                        model.Member_Birthday(value);
+                    }
+                });
+                //编辑器 配置
+                var editor = UE.getEditor('Member_Introduce');
+                editor.addListener('blur', function (editor) {
+                    model.Member_Introduce(UE.getEditor('Member_Introduce').getContent());
+                });
+
+                adminForm.load({
+                    KeyId: KeyId,
+                    url: "@Url.Action("Find")",
+                    callBack: function (r) {
+                        setTimeout(function () {
+                            editor.setContent(r.Member_Introduce ? r.Member_Introduce.replace(/'/g, '\'') : "");
+                        }, 300);
+                    }
+                });
+            },
+            Save: function () {
+                //创建 新数据
+                var newData = adminForm.createFormData({
+                    Member_Photo_Files: $("input[name=Member_Photo]")[0].files[0],
+                    Member_FilePath_Fiels: $("input[name=Member_FilePath]")[0].files[0]
+                });
+                adminForm.Save({
+                    url: "@Url.Action("Save")",
+                    data: newData,
+                    isupfile: true
+                });
+            },
+            FindBack: {//查找带回类
+                CallBack: function (row, tag, dom) {
+                    if (row != null && row.length > 0) row = row[0];
+                    if (tag == "User") {
+                        model.Member_UserID(row ? row._ukid : "");
+                        model.User_Name(row ? row.User_Name : "");
+                    }
+                }
+            }
+        };
+
+        //Member_ID, Member_Num, Member_Name, Member_Phone, Member_Sex, Member_Birthday, Member_Photo, Member_UserID, Member_Introduce, Member_CreateTime
+        function vModel() {
+            @(
+                UI.CreateKOViewModel(new MemberM(),"User_Name")
+            )
+        }
+    </script>
+}

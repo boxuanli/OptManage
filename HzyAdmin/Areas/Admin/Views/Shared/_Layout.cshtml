@@ -1,0 +1,42 @@
+﻿@{Layout = null;}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <!-- 360浏览器默认使用Webkit内核 -->
+    <meta name="renderer" content="webkit">
+    <!-- 禁止百度SiteAPP转码 -->
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>@ViewData["Title"]</title>
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--外部css-->
+    <link href="~/HzyUI/lib/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/HzyUI/css/normalize.css" rel="stylesheet" />
+    <link href="~/HzyUI/css/site.css" rel="stylesheet" />
+    <link href="~/HzyUI/css/animate.css" rel="stylesheet" />
+    <link href="~/HzyUI/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/HzyUI/lib/web-icons-master/css/web-icons.css" rel="stylesheet" />
+    @RenderSection("css", required: false)
+    <!--my css-->
+    <link href="~/HzyUI/css/main.css" rel="stylesheet" />
+    <!--基础js-->
+    <script src="~/HzyUI/lib/jquery/jquery-2.1.4.min.js"></script>
+    <script src="~/HzyUI/lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="~/Admin/lib/layer-v3.1.1/layer/layer.js"></script>
+    @{await Html.RenderPartialAsync("~/Areas/Admin/Views/Sys/PowerControl/Index.cshtml");}    
+</head>
+<body>
+    @RenderBody()
+    <script src="~/Admin/js/admin.js"></script>
+    @RenderSection("js", required: false)
+</body>
+</html>
