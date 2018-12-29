@@ -48,7 +48,7 @@
             <div class="row">
                 <div class="login-panel">
                     <h1 class="text-center" style="font-size:25px;">
-                        Operational 管理系统 管理系统<br />
+                        Operational 管理系统<br />
                         .Net Core 2.1
                     </h1>
 
@@ -103,7 +103,6 @@
             });
         });
 
-
         var App = {
             Checked: function () {
                 var uName = $("input[name=uName]").val();
@@ -112,7 +111,6 @@
                 if (!uName) return admin.msg("请输入用户名", "警告");
                 if (!uPwd) return admin.msg("请输入密码", "警告");
                 if (!loginCode) return admin.msg("请输入验证码", "警告");
-
                 admin.ajax({
                     url: "/Admin/Login/Checked",
                     data: {
