@@ -23,6 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "消息盒子、工具", "�
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{3166529C-C5E0-4CC9-BF74-28FF2FEDF448}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portal", "Portal\Portal.csproj", "{15E53540-747C-41DE-9928-11480C066B23}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{3166529C-C5E0-4CC9-BF74-28FF2FEDF448}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3166529C-C5E0-4CC9-BF74-28FF2FEDF448}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3166529C-C5E0-4CC9-BF74-28FF2FEDF448}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15E53540-747C-41DE-9928-11480C066B23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15E53540-747C-41DE-9928-11480C066B23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15E53540-747C-41DE-9928-11480C066B23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15E53540-747C-41DE-9928-11480C066B23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +72,7 @@ Global
 		{BBAF91B7-06E1-4008-8F32-DE53BAD8135A} = {C84C06BA-8818-4D7B-9682-2EE7E30DC7DC}
 		{A6E96C55-FA7D-4549-BE66-04E8052224F2} = {15B95BC6-E86F-40BB-8CA3-398B90FEF0D9}
 		{3166529C-C5E0-4CC9-BF74-28FF2FEDF448} = {42504506-58CB-49D8-A841-1E77BEA51E60}
+		{15E53540-747C-41DE-9928-11480C066B23} = {C84C06BA-8818-4D7B-9682-2EE7E30DC7DC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5B268773-9A55-4BEB-BCB9-3D026366434E}
