@@ -9,6 +9,9 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.IO;
+using Common;
+using Common.LogService;
 
 namespace Portal
 {
@@ -16,7 +19,10 @@ namespace Portal
     {
         public Startup(IConfiguration configuration)
         {
+
+            LogHelper.CreateRepository("Log4Net/log4net.config");
             Configuration = configuration;
+            Tools.Log.WriteLog("门户应用程序已启动！");
         }
 
         public IConfiguration Configuration { get; }
@@ -30,28 +36,28 @@ namespace Portal
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddSession(item =>
+            {
+                item.IdleTimeout = TimeSpan.FromMinutes(60 * 2);
+            });
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            DbFrame.DBContext.Initialization(Configuration.GetSection("AppConfig:SqlServerConnStr").Value);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Error");
-                app.UseHsts();
-            }
-
+            app.UseExceptionHandler("/Home/Index");
+            app.UseHsts();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+            Common.HttpContextService.HttpContextHelper.Configure(app.ApplicationServices.GetRequiredService<IHttpContextAccessor>());
+
+            app.UseMvcWithDefaultRoute();
             app.UseMvc();
         }
     }
