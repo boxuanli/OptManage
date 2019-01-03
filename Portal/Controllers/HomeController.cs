@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 using Common;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Portal.AOP;
 
 namespace Portal.Controllers
 {
     public class HomeController : Controller
     {
-        [Route("")]
-        [Route("Home")]
-        [Route("Home/Index")]
+
         public IActionResult Index()
         {
-            return View();
+            return RedirectToAction("Index", "Home", new { Area = "Portal" });
         }
 
         public IActionResult Error()

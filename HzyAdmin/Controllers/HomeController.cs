@@ -32,7 +32,6 @@ namespace HzyAdmin.Controllers
                 {
                     return Json(MessageBox.errorModel);
                 }
-
                 var errorModel = new ErrorModel(error.Message);
                 var sb = new StringBuilder();
                 sb.Append("<script src=\"/HzyUI/lib/jquery/jquery-2.1.4.min.js\"></script>");
@@ -55,11 +54,7 @@ namespace HzyAdmin.Controllers
                     return Json(errorModel);
                 }
                 return View(AppConfig.ErrorPageUrl, errorModel);
-                //return View("~/Views/Shared/Error.cshtml", error);
             }
-
         }
-
-
     }
 }

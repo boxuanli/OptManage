@@ -43,22 +43,41 @@ namespace Portal
             });
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.Configure<Microsoft.AspNetCore.Mvc.Razor.RazorViewEngineOptions>(item =>
+            {
+                item.AreaViewLocationFormats.Clear();
+                item.AreaViewLocationFormats.Add("/Views/Shared/{0}.cshtml");
+
+                item.AreaViewLocationFormats.Add("/Areas/{2}/Views/{1}/{0}.cshtml");
+                item.AreaViewLocationFormats.Add("/Areas/{2}/Views/Shared/{0}.cshtml");
+                item.AreaViewLocationFormats.Add("/Areas/{2}/Views/Home/{1}/{0}.cshtml");//系统管理
+            });
             DbFrame.DBContext.Initialization(Configuration.GetSection("AppConfig:SqlServerConnStr").Value);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.UseExceptionHandler("/Home/Index");
+            app.UseExceptionHandler("/Home/Error");
             app.UseHsts();
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            //session 注册
+            app.UseSession();
             Common.HttpContextService.HttpContextHelper.Configure(app.ApplicationServices.GetRequiredService<IHttpContextAccessor>());
 
-            app.UseMvcWithDefaultRoute();
-            app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "areas",
+                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
         }
     }
 }
